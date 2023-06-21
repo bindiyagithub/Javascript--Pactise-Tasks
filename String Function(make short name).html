@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>String</title>
+</head>
+<body>
+    <script>
+    
+      
+     
+     //  eg 1  here o/p = T i J
+      
+     /* let mystring = "Bindiya Hitesh Virani";
+
+      console.log(mystring.trim().charAt(0) + ''
+        +  mystring.substr(mystring.indexOf(' ')+1, 1)
+         +  mystring.substr(mystring.lastIndexOf(' ')+1, 1)
+        );  */
+
+
+
+      // eg 2 
+      /* 
+      let myname = "divyesh patel"
+        String.prototype.sortName = function()
+        {
+            return this.slice(0,1) + " " + this.substr( this.indexOf(" ") +1,1);
+        }
+
+        console.log(myname.sortName());   */
+
+
+        // eg 3
+
+         // "This is the string This is the string  This is the sring ";
+         const inputString = "This is the string This is the string This is the sring";
+             const words = inputString.trim().split(" ");
+
+          for (let i = 0; i < words.length; i++) 
+          {
+            const firstLetter = words[i].substr(0, 1);
+             console.log(firstLetter);
+          }
+    </script>
+          
+</body>
+</html>

@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use of some & every </title>
+</head>
+<body>
+
+    <script>
+
+     let myTaskStatus = [
+          {
+               UserId: 1,
+               TaskList : [
+                    {   
+                        Id:1,
+                        Name: "Coding",
+                        Status: true
+
+                    },
+                    {   
+                        Id:1,
+                        Name: "Unit Testing",
+                        Status: true
+                    }
+               ]
+
+
+          },
+
+          {
+               UserId: 2,
+                TaskList : [
+                    {   
+                        Id:1,
+                        Name: "Coding",
+                        Status: false
+
+
+                    },
+                    {   
+                        Id:1,
+                        Name: "Unit Testing",
+                        Status: true
+                    },
+                    {   
+                        Id:2,
+                        Name: "Unit",
+                        Status: true
+                    }
+               ]
+          }
+
+     ]
+
+     /* now ye json mai se jiska status true ho vahi object
+     ka data get karna hai , to ek esa object banaya jiska 
+     usrid ke tasklist ka status true ho, so use every
+     method */
+
+     let output =  myTaskStatus.map((value , index) =>{
+
+          let obj =
+          {
+               Id: value.UserId,
+               taskstatus: value.TaskList.every((a,b)=>{
+               return a.Status == true;
+               })
+          }
+
+          return obj;
+     })
+
+     console.log(output);
+
+     </script>
+
+     </body>

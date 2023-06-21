@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+.droptarget {
+  width: 30%; 
+  height: 50px;
+  float: left;
+  margin: 50px;
+  padding: 10px;
+
+  border: 1px solid black;
+}
+
+    </style>
+</head>
+<body>
+
+    <table id="mytable" border="1" class="droptarget" ondrop="drop(event)" 
+    ondragover="allowDrop(event)">
+
+        <tr id="row1" draggable="true"  ondragstart="dragStart(event)" >
+            <td>
+                101
+            </td>
+
+            <td>
+                Javasrcipt
+            </td>
+
+        </tr>
+
+        <tr id="row2" draggable="true"  ondragstart="dragStart(event)" >
+            <td>
+                103
+            </td>
+
+            <td>
+                Angular
+            </td>
+
+        </tr>
+        <tr id="row3" draggable="true"  ondragstart="dragStart(event)" >
+          <td>
+              103
+          </td>
+
+          <td>
+              Java
+          </td>
+
+        </tr>
+      <tr id="row4" draggable="true"  ondragstart="dragStart(event)" >
+          <td>
+              104
+          </td>
+
+          <td>
+              Python
+          </td>
+
+      </tr>
+      <tr id="row5" draggable="true"  ondragstart="dragStart(event)" >
+          <td>
+              105
+          </td>
+
+          <td>
+              Bootstrap
+          </td>
+
+     </tr>
+
+</table>
+
+
+    <br/>
+
+
+
+    <table id="mytable1" border="1" class="droptarget" ondrop="drop(event)" 
+    ondragover="allowDrop(event)">
+
+        <tr id="row2" draggable="true"  ondragstart="dragStart(event)" >
+            <td>
+                1021
+            </td>
+
+            <td>
+                React JS
+            </td>
+
+        </tr>
+
+        <tr id="row4" draggable="true"  ondragstart="dragStart(event)" >
+            <td>
+                1042
+            </td>
+
+            <td>
+                CSS
+            </td>
+
+        </tr>
+        <tr id="row3" draggable="true"  ondragstart="dragStart(event)" >
+          <td>
+              5425
+          </td>
+
+          <td>
+              Node JS
+          </td>
+
+      </tr>
+
+
+
+    </table>
+
+    <script>
+
+const dragStart = (event)=> 
+{
+  event.dataTransfer.setData("Text", event.target.id);
+}
+
+
+
+/* Events fired on the drop target */
+const allowDrop = (event)=> 
+{
+  event.preventDefault();  // browser ki bydefault functionality(event) hoti hai wo prevent(close) kar deta hai
+}
+
+const drop = (event)=> 
+{
+  event.preventDefault();
+  const data = event.dataTransfer.getData("Text");
+  let p = document.getElementById(data);
+  event.target.appendChild(p);
+
+}
+
+        </script>
+
+</body>
+</html>

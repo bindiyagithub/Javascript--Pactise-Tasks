@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONly Name CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    
+
+    <input type="text" id="display" class="m-3"/>
+    
+    <input type="button" value="Save" class="btn btn-success m-2" 
+    onclick="saveItem()" />
+
+    <div id="view"></div>
+    
+    <script>
+/* real use of push() :-yaha humne <body> mai ek textbox liya & ek Save name 
+    ka button liya. jub bhi ye button per  click karenge tub saveItem()
+    name ka fun chalega.yaha humne ek blank array liya, jo bhi item hum
+     push (add) karenge wo sub ye blank array mai a jani chahiye.
+yaha saveItem name ka fun. liya, usme item name ke var mai humari item
+a jayegi then myitems name ke array mai wo item ko push() method ki
+help se add ker denge.ye ek item add huyi. so ub sub push ki hui item ko
+myitems array mai add karke display karne ke liye niche ek display() name 
+ka fun.liya usme map() method through wo sub value ko return karvayi then uske
+ baju mai delete ka btn liya   */ 
+
+        // let myitems = []
+        
+        // function saveItem()
+        // {
+        //     let item = document.getElementById("display").value;
+        //     myitems.push(item);
+        //     display();
+        // }
+        
+        // function display()
+        // {
+        // let newarray = myitems.map(function(value,index) 
+        //{
+
+        //  /* return `${value}`;  ub ye jo value return karvayi hai 
+        //                        uske baju mai h hum delete ka button lete
+        //                         hai  */
+        
+        //    return(`<div>${value}<button class="btn btn-warning m-2>">
+        //                         delete</button></div>`)
+        // });
+        
+        // document.getElementById("view").innerHTML = newarray.join(" ");
+        // }   
+
+
+     /*  yaha uper humne array display karvaya now humko edit karna hai so  humne 
+     ek delete btn ke baju mai ek adit button bana liya.abhi ye button mai 
+     humne editItem name ka function call kiya, items mai edit karne ke 
+     liye humko index chahiye so humne isme editItem(${index}) pass ker 
+     diya , ye fun niche define kiya hai.  
+     then usko humne display karvaya. ub humne uper ek index name ka var liya
+      usme index = -1 set ker liya then humne saveItem fun mai condition li 
+      ki ager index<0 hai to item ko add ker do.bt ager index > 0 it means 0 
+      se zyada hai to item ko edit karna hai. so humne 
+      myitems.splice(index,1,item) ye liya it means  jo index hai usme ek
+       delete ker dunga & 1 new item add ker denge. 
+      suppose humko items ko adit & add dono chiz ek h button pe karni hai to is tarah 
+      ker sakte hai. */
+     
+     
+     let myitems = []
+        let index= -1;  // this index is takes for edit
+
+        // for save the item
+        function saveItem()
+        {
+            let item = document.getElementById("display").value;
+            if(index <0)
+            {
+         
+            myitems.push(item);  // ager index ki value 0 se small hai to add karna hai
+            }
+            else          // ager index >0 hai to index mai se 1 item splice means remove ker de
+            { 
+                myitems.splice(index,1,item); 
+                index = -1;
+               //myitems[index] = item;
+            }
+            display();
+        }
+
+    // for delete the item 
+
+    function deleteItem(index){
+    // let item = document.getElementById("display").value;
+     myitems.splice(index,1);
+     display()
+    }
+
+      // for edit the item
+      function editItem(a)   // yaha humne a pass kiya it means index pass ki hai
+        {
+            index = a;
+
+            document.getElementById("display").value = myitems[a];  // textbox mai pahele value dalni padegi
+        }
+
+        function display()
+        {
+        let newarray = myitems.map(function(value,index) {
+
+            return(`<div>${value} <button class="btn btn-warning m-2" 
+                                  onclick = "deleteItem(${index})">delete</button>
+                 <button class = "btn btn-danger" onclick ="editItem(${index})">
+                 edit</button></div>`)
+        })
+
+        document.getElementById("view").innerHTML = newarray.join(" ");
+        }
+
+
+        
+    
+    </script>
+        
+
+
+
+</body>
+</html>

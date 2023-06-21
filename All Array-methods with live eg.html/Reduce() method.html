@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Reduce</title>
+</head>
+<body>
+     <script>
+      // here we wan to find a total price product wise    
+          let mycart = [
+            {
+                Id: 1,
+                price: 45,
+                count :2,
+                name: "product1"
+            },
+            {
+                Id: 2,
+                price: 245,
+                count :1,
+                name: "product2"
+            }
+
+        ]
+
+      /* yaha reduce() total price calculate karke dega, so
+      o/p = 335.  yaha product1 two buy ki hai & product2 one
+      h buy ki hai so toatal price t mai store hogi = 335 */ 
+
+    /* let t=   mycart.reduce((pre,curr)=>
+     {
+          return pre + curr.price * curr.count;
+     },0)  
+
+
+        console.log(t);  */
+
+
+        /* eg of remove duplicate no then display that duplicate 
+        numbers  */
+
+        let myarray =[2,3,4,1,2,3,1,2,3];
+
+    let d=   myarray.reduce((pre,current)=> 
+    {
+
+        if(!pre.includes(current))
+        {
+            pre.push(current);
+        }
+
+        return pre;
+
+    },[])
+
+
+            console.log(d);  // it display the reduced numbers o/p = 2,3,1,4
+
+
+        let d1=   myarray.reduce((pre,current)=> 
+        {
+
+
+           if (myarray.indexOf(current) != myarray.lastIndexOf(current) && !pre.includes(current))
+           {
+
+               pre.push(current);
+
+           }
+
+return pre;
+
+},[])
+
+console.log(d1);   // it display only duplicate numbers  o/p = 2,3,1
+
+
+
+     </script>
+</body>
+</html>

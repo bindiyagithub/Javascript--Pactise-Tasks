@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Darg & Drop in api</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+     
+          <div class="row m-2">
+               
+               <div class="col-md-6">
+                  <table id="mytable1" border="2"
+                   ondrop="drop(event)" draggable="true"  
+                   ondragstart="dragStart(event)"  ondragover="allowDrop(event)">
+               
+               </table>
+               </div>
+               
+          
+               
+              <div class="col-md-6">
+               <table  id="mytable1" border="1" ondrop="drop(event)" ondragover="allowDrop(event)" height="50%" width="80%" 
+               draggable="true"  ondragstart="dragStart(event)"  style="border:3px solid red;">
+                    <tr draggable="true"  ondragstart="dragStart(event)">
+                         <td></td>
+                         <td></td>
+                    </tr>
+               </table>
+               </div>
+              
+          </div>
+     
+     
+     
+
+    
+     <script>
+          let myAry = [];
+          fetch("https://jsonplaceholder.typicode.com/posts")
+          .then(y=>y.json())
+          .then(y=>{
+
+               myAry =y;
+               display(y);
+          })
+
+          function display(data)
+          {
+               let d = data.map((value)=>{
+
+                    return(`<tr draggable="true"  ondragstart="dragStart(event)"> <td> ${value.id}</td>
+                         <td> ${value.title}</td>
+                         </tr>`);
+               })
+               document.getElementById("mytable1").innerHTML = 
+               d.join("");
+          }
+
+          function dragStart(event) 
+{
+  event.dataTransfer.setData("Text", event.target.id);
+}
+
+
+
+/* Events fired on the drop target */
+function allowDrop(event) 
+{
+  event.preventDefault();  // browser ki bydefault functionality(event) hoti hai wo prevent(close) kar deta hai
+}
+
+function drop(event) 
+{
+  event.preventDefault();
+  const data = event.dataTransfer.getData("Text");
+  let p = document.getElementById(data);
+  event.target.appendChild(p);
+
+}
+
+     </script>
+</body>
+</html>

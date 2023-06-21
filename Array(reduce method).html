@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let mynumbers = [1,2,3,1,5,1,2,12];
+
+
+        console.log(mynumbers.includes(2222));
+     let finaloutput =   mynumbers.reduce(function(pre,current){
+
+
+            if(pre.includes(current) == false)
+            {
+                pre.push(current);
+            }
+
+            return pre;
+
+        },[])
+
+
+        console.log(finaloutput);   
+
+
+        // eg 2
+
+        let mycart = [
+            {
+                Id: 1,
+                price: 45,
+                count :2,
+                name: "product1"
+            },
+            {
+                Id: 2,
+                price: 245,
+                count :1,
+                name: "product2"
+            }
+
+        ]
+
+     let t=   mycart.reduce(function(pre,current){
+
+            // (0 + 45 * 2 = 90 so return 90 )
+            return pre + current.price * current.count;
+        },0)  
+
+
+        console.log(t);
+
+
+    </script>
+
+</body>
+</html>

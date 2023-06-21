@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display products</title>
+    <link rel="stylesheet" href="stylesproducts.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+  </head>
+  <body>
+    
+    <!-- for arrange the price in asc & desc order -->
+    <select id="priceSorting" class="search-input p-2 m-2" 
+    onchange="arrangeData()">
+      <option value="Price in Desc">Price in Desc</option>
+      <option value="Price in Asc">Price in Asc</option>
+      
+    </select>
+    
+    
+    
+    <!-- products -->
+
+    <section class="products">
+      <!-- filters -->
+      <div class="filters-container">
+        <!-- search -->
+        <form class="input-form">
+          <input type="text" class="search-input" placeholder="search..." 
+          id="searchTerm" onchange="filterProduct()"/>
+        </form>
+
+        
+      <!-- categories -->
+        <h5>Company</h5>
+          
+          <article class="companies" id="companies">
+              <button class="company-btn">all</button>
+              <button class="company-btn">ikea</button>
+               <button class="company-btn">marcos</button>
+               <button class="company-btn">caressa</button>
+               <button class="company-btn">liddy</button>
+          
+        </article>
+      </div>
+      <!-- products -->
+      <div class="products-container" id="products">
+        <!-- single product -->
+        <article class="product">
+          
+          <img
+            src="https://dl.airtable.com/.attachments/14ac9e946e1a02eb9ce7d632c83f742f/4fd98e64/product-1.jpeg"
+            class="product-img img"
+            alt=""
+          />
+          <footer class="product footer">
+            <h5 class="company-name">ikea</h5>
+            <p class="product-name">high-back bench</p>
+            <span class="product-price">$9.99</span>
+            <div card="card-footer d-grid">
+              <button class="btn btn-primary">Add to Cart</button>
+            </div>
+          </footer>
+        </article>
+
+
+      </div>
+    </section>
+    <script src="products.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+  </body>
+</html>

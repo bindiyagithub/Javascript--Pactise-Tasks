@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login user for Token</title>
+     <style>
+          
+          .loginSection
+          {
+             position: absolute;
+             top:50%;
+             left:50%;
+             transform: translate(-50% , -50%);
+             
+             width: 400px;
+             background-color:white;
+             border-radius: 5px;
+          }
+          
+          .loginSection h1
+          {
+             text-align: center;
+          }
+          
+          .form
+          {
+            padding-bottom: 15px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 20px;
+          }
+          
+          .textfield
+          {
+            width: 100%;
+            height: 50px;
+            font-size: 18px;
+            border: 1px solid rgb(81, 120, 240);
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            padding-left: 10px;
+          }
+          
+          .loginbtn
+          {
+            width: 100%;
+            height: 50px;
+            background-color: rgb(36, 42, 167);
+            border-radius: 6px;
+            font-size: 20px;
+            margin-top:10px;
+            margin-bottom: 10px;
+            color: white;
+            border: none;
+            cursor:pointer;
+          
+          }
+          
+          .loginbtn:hover
+          {
+            background-color: rgb(83, 175, 236);
+          }
+          
+          
+          /* @media (max-width: 470px)  
+          {
+              .loginSection
+              {
+                  width: 88%;
+              }
+          } */
+          
+               </style>
+</head>
+<body>
+     <div class="loginSection">
+          <h1> Login </h1>
+          <hr>
+          <div class ="form">
+              <input type="email" name="Email"  id="email" placeholder="Email" 
+              class="textfield" required><br> 
+              
+              <input type="password" name="Password" id="password"  placeholder="Password" 
+              class="textfield" required> <br>   
+              
+              <input type="submit" class="loginbtn" name="loginbtn" 
+              onclick="loginMessage()" value="Login">
+          </div>
+     
+     </div>
+</body>
+
+<script>
+     function loginMessage()
+     {
+       /* yaha humne jo object banaya usme dynamically email
+       & password ki value ayegi(jo user ne dali hogi wo) */
+          let myObj = {
+
+              email: document.getElementById( "email" ).value,
+
+              password: document.getElementById( "password" ).value
+
+          }
+
+
+
+          fetch( "https://real-pear-fly-kilt.cyclic.app/accounts/authenticate", {
+                         
+               method: 'POST',
+               body: JSON.stringify(myObj),   
+               headers: 
+               {
+                    'Accept': 'application/json', /* ye key ka mutalb humne data JSON mai h get hona chahiye  */
+                    'Content-type': 'application/json' /*  ye key ka matalb jo bhi data hum send ker rahe hai wo*/
+               }
+                    
+               
+
+          } ).then(y=>y.json())  
+          .then(y=> 
+          {
+               
+               localStorage.setItem("token", y.jwtToken)
+               console.log(y);
+             
+          
+          })
+          
+
+               console.log(myObj); /*it display above object value all 
+                                    records that we have enter in form
+                                     it means yaha  jitne bhi client
+                                      ne login kiya hoga email & password
+                                      dalker wo sare records yaha console
+                                      mai display hoge.  */
+                
+
+     }
+</script>
+</html>

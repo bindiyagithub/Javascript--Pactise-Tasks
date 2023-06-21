@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Video pause & play</title>
+</head>
+<body>
+     <video width="50%" id="myvideo" controls  onpause="mypause()" 
+     onplay="myplay()">
+     <source src="https://www.w3schools.com/html/mov_bbb.mp4" 
+     type="video/mp4">
+        
+     </video>
+     <script>
+          /* onpause() event :- jub bhi video pause karna hota hai tub
+          ye event ka use karte hai .
+          
+          onplay() event :- jub bhi video play karna hota hai tub
+          ye event ka use karte hai */
+     function mypause()
+    {
+       document.getElementById("myvideo").innerHTML;
+       //alert("this is stop");
+    }
+
+     function myplay()
+     {
+       //alert("this is run");
+     }
+     </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>error handling</title>
+</head>
+<body>
+     <div class="display"></div>
+     <script>
+            
+            try
+            {
+            let a ="1"; // here 1 is in a string so datatypes is wrong
+            let b= a.toFixed();
+           
+           
+
+            }
+            catch(e)
+            {
+               //window.location.href = "errorDisplay.html"
+                console.log(e.name);   // typeerror
+               console.log(e.message);   // a.toFixed is not a function
+            }
+            finally
+            {
+
+               
+            }
+
+     </script>
+</body>
+</html>

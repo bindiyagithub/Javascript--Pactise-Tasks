@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body>
+     <script>
+
+     /*  o/p = condition failed becoz hrere d & d1  values are same bt
+          refresences are different */
+
+     /* let d = [4,5,6];
+        let d1 = [4,5,6];
+
+     if( d == d1){
+             console.log("this is the javascript");
+     }
+
+     console.log("condition failed!"); */
+
+/////////////////////   if..else....if condition   /////////////////////
+        let myarray = 30000;
+        let dis = 0;
+        // 0-5000 ->5%
+        // 5000-10000->10%
+        // 10000-20000->15%
+        // 20000->20%
+
+        if(myarray>=0 && myarray<5000)
+        {
+            dis = discount(myarray,5)
+
+        }
+        else if(myarray>=5000 && myarray<10000)
+        {
+            dis = discount(myarray,10)
+        }
+        else if(myarray>=10000 && myarray<20000)
+        {
+            dis = discount(myarray,15)
+        }
+        else
+        {
+            dis = discount(myarray,20)
+
+        }
+
+        console.log(dis);
+
+
+        function discount(inputValue,percentage)
+        {
+
+            return  inputValue - (inputValue*percentage/100); // it gives a discount price
+        }
+     </script>
+</body>
+</html>

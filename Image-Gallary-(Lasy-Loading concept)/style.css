@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section{
+    background-color: rgb(40, 36, 36);
+}
+
+input{
+    width: 400px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+input[type="submit"]{
+    width: auto;
+    background-color: transparent;
+    border: 2px solid lightgray;
+    color: #fff;
+}
+#lMore{
+    display: none;
+}
+#gllry{
+    columns: 4 280px;
+    margin-top: 10px;
+}
+.photo{
+    width: 100%;
+    margin: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    input{
+        width: auto;
+    }
+  }

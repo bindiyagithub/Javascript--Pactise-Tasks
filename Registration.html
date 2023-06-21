@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Registration</title>
+     <style>
+
+          .registerSection
+          {
+               margin: 5%;
+             text-align: center;
+             
+          }
+          .registerSection h2
+          {
+               text-align: center;
+          }
+          .form
+               {
+                 padding-bottom: 15px;
+                 margin-left: 20px;
+                 margin-right: 20px;
+                 margin-top: 20px;
+               }
+          .textfield
+               {
+                 width: 40%;
+                 height: 30px;
+                 font-size: 10px;
+                 border: 1px solid rgb(60, 107, 249);
+                 
+                 border-radius: 4px;
+                 box-sizing: border-box;
+                 margin-bottom: 6px;
+                 padding-left: 10px;
+               }
+               
+         .registerbtn{
+      
+             padding: 10px;
+             width: 40%;
+             font-size: 15px;
+             border-radius: 10px;
+             color:white;
+             background-color:rgb(36, 42, 167);
+             border: none;
+             cursor: pointer;
+         }
+     
+         .registerbtn:hover
+         {
+          background-color: rgb(83, 175, 236); 
+         }
+          input{
+         
+         padding: 5px;
+         font-size: 12px;
+         border: 2px solid black;
+         width: 30%;
+         border-radius: 3px;
+         
+     } 
+     </style>
+</head>
+<body>
+     
+     <div class ="form">
+          <input type="text" class="textfield"  id="title"
+           placeholder="Enter your title"/> <br> <br>      
+          
+          <input type="text" class="textfield" id ="firstName"
+          name="firstName" placeholder="Enter Firstname" required /> <br> <br>
+   
+          <input type="text" class="textfield"  id = "lastName" 
+          name="lastName" placeholder="Enter Lastname" required /> <br> <br>
+   
+          <input type="email" class="textfield" id = "email"
+           name="email" placeholder="Enter email"><br> <br>
+   
+          <input type="password" class="textfield" id = "password" 
+          name="password" placeholder="Enter password" required> <br> <br>
+   
+          <input type="password" class="textfield" id = "confirmPassword" 
+          name="confirmPassword" placeholder="Enter Confirmpassword" required /> <br> <br>
+   
+          <input type="checkbox" class="textfield" id = "check" 
+          name="acceptTerms" /> <br> <br>
+     
+          <input type="button"  class="registerbtn"  name="registerbtn"
+          value ="Register(Save)" onclick="SaveInformation()"/>  
+              
+     </div>
+     <script>
+    
+     function SaveInformation()
+     {
+             let obj =
+             {
+               title: document.getElementById("title").value,
+               firstName: document.getElementById("firstName").value,
+               lastName: document.getElementById("lastName").value,
+               email: document.getElementById("email").value,
+               password: document.getElementById("password").value,
+               confirmPassword: document.getElementById("confirmPassword").value,
+               acceptTerms: document.getElementById("check").checked
+
+             }
+
+          fetch("https://real-pear-fly-kilt.cyclic.app/accounts/register",
+             {
+               method : "post",
+               body : JSON.stringify(obj),
+               headers : {'Content-type': 'application/json'}
+              
+              }
+          ).then(y=>y.json())
+                .then( y =>
+                {
+                    console.log(y);
+                    alert("registration successful!"); 
+                })
+     }
+     </script>
+</body>
+</html>
